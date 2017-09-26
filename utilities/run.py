@@ -38,7 +38,7 @@ F = sample_truncated_features_init(numObj,numStates,10);
 p_self = 0.95
 pi_z = ((1-p_self)/(numStates-1))*np.ones((numStates,numStates))
 for ii in range(0,numStates):
-    pi_z(ii,ii) = p_self
+    pi_z[ii,ii] = p_self
 
 pi_init = np.ones((1,numStates))
 pi_init = pi_init/np.sum(pi_init)
@@ -69,7 +69,7 @@ for nn in range(0,numObj):
             labels[k] = 1+np.sum(P[-1]*np.random.rand(1) > P)
         Y[:,k] = A[labels(k)]*x + np.random.multivariate_normal(np.zeros((d,1)).T,Sigma[labels(k),1].T)
         X[:,k] = x;
-        x = [[Y[:,k],x[1:-1-d]],:]
+        #x = [[Y[:,k],x[1:-1-d]],:]
     
 
     
